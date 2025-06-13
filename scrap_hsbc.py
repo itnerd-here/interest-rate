@@ -10,8 +10,7 @@ def extract_hsbc_deposit_rates(url):
         url: The URL of the HSBC HK deposit offers page.
 
     Returns:
-        A dictionary where keys are currencies (e.g., "HKD", "USD") and values
-        are dictionaries containing interest rates for different tenors (e.g., "3 months", "6 months").
+        A list containing interest rates for different tenors (e.g., "3 months", "6 months") and currencies ('HKD', 'USD').
         Returns None if there's an error or no rates are found.
     """
     try:
@@ -43,7 +42,7 @@ def extract_hsbc_deposit_rates(url):
                 return None
 
             # Extract rate with corresponding tenor from table
-            pattern = r'<span class="A-PAR16R-RW-ALL">(.*?)</span>'
+            pattern = r'<span class="A-PAR16R-RW-ALL">(.*?)</span>' # Extract the lower tier of interest rate
             for row in table.find_all("tr")[1:]:  # Skip header row
                 matches = re.findall(pattern, str(row))
                 if len(matches) >= 2:

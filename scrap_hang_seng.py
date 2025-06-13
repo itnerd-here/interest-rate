@@ -5,14 +5,13 @@ import re
 
 def extract_hang_seng_deposit_rates(url):
     """
-    Extracts time deposit interest rates from the HSBC HK website.
+    Extracts time deposit interest rates from the Hang Seng Bank website.
 
     Args:
-        url: The URL of the HSBC HK deposit offers page.
+        url: The URL of the Hang Seng Bank deposit offers page.
 
     Returns:
-        A dictionary where keys are currencies (e.g., "HKD", "USD") and values
-        are dictionaries containing interest rates for different tenors (e.g., "3 months", "6 months").
+        A list containing interest rates for different tenors (e.g., "3 months", "6 months") and currencies ('HKD', 'USD').
         Returns None if there's an error or no rates are found.
     """
     try:
@@ -31,7 +30,7 @@ def extract_hang_seng_deposit_rates(url):
         # Find all tables containing deposit rates (this might need adjustment if the site structure changes)
         rate_tables = soup.find_all("table", {"class": "ui-table"} )
 
-
+        # Extract the lower tier of interest rate
         for title, rate_table in zip(titles[17:], rate_tables[17:]):
             currency_match = None
             try:
