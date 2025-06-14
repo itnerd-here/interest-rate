@@ -65,13 +65,13 @@ def extract_hsbc_deposit_rates(url):
 
 
 
-# Example usage:
-url = "https://www.hsbc.com.hk/accounts/offers/deposits/"
-deposit_rates = extract_hsbc_deposit_rates(url)
+# # Example usage:
+# url = "https://www.hsbc.com.hk/accounts/offers/deposits/"
+# deposit_rates = extract_hsbc_deposit_rates(url)
 
-if deposit_rates:
-    for currency, tenor, rate in deposit_rates:
-        print(f"\n{currency} Time Deposit Rates:")
-        print(f"  {tenor}: {rate:.4f}") # Format the rate to 4 decimal places
-else:
-    print("Could not extract deposit rates.")
+# if deposit_rates:
+#     for currency, tenor, rate in deposit_rates:
+#         print(f"\n{currency} Time Deposit Rates:")
+#         print(f"  {tenor}: {rate:.4f}") # Format the rate to 4 decimal places
+# else:
+#     print("Could not extract deposit rates.")

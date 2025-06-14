@@ -66,13 +66,13 @@ def extract_hang_seng_deposit_rates(url):
 
 
 
-# Example usage:
-url = "https://cms.hangseng.com/cms/emkt/pmo/grp06/p04/eng/index.html"
-deposit_rates = extract_hang_seng_deposit_rates(url)
+# # Example usage:
+# url = "https://cms.hangseng.com/cms/emkt/pmo/grp06/p04/eng/index.html"
+# deposit_rates = extract_hang_seng_deposit_rates(url)
 
-if deposit_rates:
-    for currency, tenor, rate in deposit_rates:
-        print(f"\n{currency} Time Deposit Rates:")
-        print(f"  {tenor}: {rate:.4f}") # Format the rate to 4 decimal places
-else:
-    print("Could not extract deposit rates.")
+# if deposit_rates:
+#     for currency, tenor, rate in deposit_rates:
+#         print(f"\n{currency} Time Deposit Rates:")
+#         print(f"  {tenor}: {rate:.4f}") # Format the rate to 4 decimal places
+# else:
+#     print("Could not extract deposit rates.")

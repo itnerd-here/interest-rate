@@ -52,13 +52,13 @@ def extract_china_bank_deposit_rates(url):
 
     return rate_table.values.tolist()
 
-# Example usage:
-url = "https://www.bochk.com/en/deposits/promotion/timedeposits.html"
-deposit_rates = extract_china_bank_deposit_rates(url)
+# # Example usage:
+# url = "https://www.bochk.com/en/deposits/promotion/timedeposits.html"
+# deposit_rates = extract_china_bank_deposit_rates(url)
 
-if deposit_rates:
-    for currency, tenor, rate in deposit_rates:
-        print(f"\n{currency} Time Deposit Rates:")
-        print(f"  {tenor}: {rate:.4f}") # Format the rate to 4 decimal places
-else:
-    print("Could not extract deposit rates.")
+# if deposit_rates:
+#     for currency, tenor, rate in deposit_rates:
+#         print(f"\n{currency} Time Deposit Rates:")
+#         print(f"  {tenor}: {rate:.4f}") # Format the rate to 4 decimal places
+# else:
+#     print("Could not extract deposit rates.")
