@@ -1,7 +1,4 @@
-from scrap_hsbc import extract_hsbc_deposit_rates
-from scrap_hang_seng import extract_hang_seng_deposit_rates
-from scrap_china_bank import extract_china_bank_deposit_rates
-from scrap_sc import extract_sc_deposit_rates
+from scrap_interest import scrap_hsbc, scrap_hang_seng, scrap_china_bank, scrap_sc
 from upload_sheet import upload_df_to_gsheet
 from datetime import datetime 
 import pandas as pd
@@ -18,7 +15,7 @@ def main():
 
     banks_name = ['HSBC', 'Hang Seng Bank', 'BoC Hong Kong', 'SC HK']
     banks_url = [hsbc_url, hang_seng_url, china_bank_url, sc_url]
-    banks_func = [extract_hsbc_deposit_rates, extract_hang_seng_deposit_rates, extract_china_bank_deposit_rates, extract_sc_deposit_rates]
+    banks_func = [scrap_hsbc.extract_hsbc_deposit_rates, scrap_hang_seng.extract_hang_seng_deposit_rates, scrap_china_bank.extract_china_bank_deposit_rates, scrap_sc.extract_sc_deposit_rates]
 
     result = []
 
@@ -33,7 +30,7 @@ def main():
     credentials_path = "credentials.json"  # Replace with the actual path
 
     # Upload the DataFrame
-    upload_df_to_gsheet(pd.concat(result, axis=0), spreadsheet_name, credentials_path=credentials_path)
+    upload_df_to_gsheet(pd.concat(result, axis=0), spreadsheet_name, sheet_name='interest rate' ,credentials_path=credentials_path)
 
     pass
 
