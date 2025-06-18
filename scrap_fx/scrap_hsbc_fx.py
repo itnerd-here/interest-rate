@@ -1,8 +1,9 @@
 from selenium import webdriver
 import pandas as pd
 from bs4 import BeautifulSoup
+import time
 
-def extract_china_bank_deposit_rates(url):
+def extract_hsbc_fx(url):
     """
     Extracts time FX rate from HSBC website.
 
@@ -16,7 +17,7 @@ def extract_china_bank_deposit_rates(url):
 
     driver = webdriver.Firefox()
     driver.get(url)
-
+    time.sleep(5)
     soup = BeautifulSoup(driver.page_source, "html.parser")
     rate_tables = soup.find_all("table")
 
@@ -43,15 +44,10 @@ def extract_china_bank_deposit_rates(url):
 
     driver.close()
 
-    return rate_table.values.tolist()
+    return rate_table
 
 # # Example usage:
 # url = "https://www.hsbc.com.hk/investments/products/foreign-exchange/currency-rate/"
-# deposit_rates = extract_china_bank_deposit_rates(url)
+# deposit_rates = extract_hsbc_fx(url)
 
-# if deposit_rates:
-#     for currency, tenor, rate in deposit_rates:
-#         print(f"\n{currency} Time Deposit Rates:")
-#         print(f"  {tenor}: {rate:.4f}") # Format the rate to 4 decimal places
-# else:
-#     print("Could not extract deposit rates.")
+# print(deposit_rates)

@@ -36,21 +36,15 @@ def upload_df_to_gsheet(df, spreadsheet_name, sheet_name="Sheet1", credentials_p
         except gspread.WorksheetNotFound:
             worksheet = sh.add_worksheet(title=sheet_name, rows=1000, cols=26) # Adjust rows/cols as needed
         
+        # 3.5 Clear existing data in the worksheet (optional)
+        # worksheet.clear()
 
         # 4. Convert DataFrame to a list of lists
         data = [df.columns.tolist()] + df.values.tolist()
 
 
-        # 5. Check the last row of the sheet
-        last_row_no = len(worksheet.get_all_values())
-
-
-        # 6. Upload the data
-        # If no data exists, write to the first cell; else write to the last row + 1
-        if last_row_no == 1:
-            worksheet.update(data, "A1")
-        else:
-            worksheet.update(data[1:], f"A{last_row_no+1}")
+        # 5. Upload the data
+        worksheet.update(data, "B1")
 
         print(f"DataFrame uploaded to '{spreadsheet_name}', sheet '{sheet_name}'")
 
